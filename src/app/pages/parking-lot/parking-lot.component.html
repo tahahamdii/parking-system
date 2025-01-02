@@ -1,0 +1,52 @@
+<div class="dashboard">
+    <button (click)="redirectToAddParkingSpot()">Add Parking Spot</button>
+  
+    <div class="dashboard-container">
+      <h1>Parking Spot Dashboard</h1>
+  
+      <!-- Stats Section -->
+      <div class="stats">
+        <div class="stat-card">
+          <h3>Total Spots</h3>
+          <p>{{ totalSpots }}</p>
+        </div>
+        <div class="stat-card">
+          <h3>Occupied Spots</h3>
+          <p>{{ totalOccupied }}</p>
+        </div>
+        <div class="stat-card">
+          <h3>Available Spots</h3>
+          <p>{{ totalAvailable }}</p>
+        </div>
+      </div>
+  
+      <!-- Parking Spot Table -->
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Spot ID</th>
+            <th>Spot Size</th>
+            <th>Status</th>
+            <th>Actions</th> <!-- Added Actions column -->
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let spot of parkingSpots">
+            <td>{{ spot.id }}</td>
+            <td>{{ spot.spotId }}</td>
+            <td>{{ spot.spotSize }}</td>
+            <td>
+              <span [ngClass]="{'occupied': spot.isOccupied, 'available': !spot.isOccupied}">
+                {{ spot.isOccupied ? 'Occupied' : 'Available' }}
+              </span>
+            </td>
+            <td>
+              <button (click)="deleteParkingSpot(spot.id)">Delete</button> <!-- Delete button -->
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  

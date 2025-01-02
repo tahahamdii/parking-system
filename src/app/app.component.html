@@ -1,0 +1,20 @@
+<header>
+  <h1>Parking Management System</h1>
+</header>
+
+<!-- Sidebar -->
+<div *ngIf="shouldShowSidebar()" class="sidebar">
+  <ul>
+    <!-- <li><a routerLink="home">Dashboard</a></li>
+    <li><a routerLink="home">Parking</a></li> -->
+    <li><a routerLink="parking-lot">Parking-lot</a></li>
+    <li><a routerLink="park-car">Park Vehicle</a></li>
+    <li><a routerLink="exit">Exit Vehicle</a></li>
+    <li><a routerLink="parked-cars">Parked Vehicle</a></li>
+    <li><a href="#">Settings</a></li>
+  </ul>
+</div>
+
+<div class="content">
+  <router-outlet></router-outlet>
+</div>

@@ -1,0 +1,30 @@
+<div *ngIf="parkedVehicles.length > 0">
+    <h2>Parked Vehicles</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>License Plate</th>
+          <th>Vehicle Type</th>
+          <th>Entry Time</th>
+          <th>Assigned Spot</th>
+          <th>Spot Size</th>
+          <th>Occupied</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let vehicle of parkedVehicles">
+          <td>{{ vehicle.licensePlate }}</td>
+          <td>{{ vehicle.vehicleType }}</td>
+          <td>{{ vehicle.entryTime }}</td>
+          <td>{{ vehicle.assignedSpot.spotId }}</td>
+          <td>{{ vehicle.assignedSpot.spotSize }}</td>
+          <td>{{ vehicle.assignedSpot.isOccupied ? 'Yes' : 'No' }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+  <div *ngIf="parkedVehicles.length === 0">
+    <p>No vehicles are currently parked.</p>
+  </div>
+  

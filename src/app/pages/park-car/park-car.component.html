@@ -1,0 +1,38 @@
+<div class="park-car-container">
+    <h2>Park Vehicle</h2>
+    <form [formGroup]="parkCarForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="licensePlate">License Plate:</label>
+        <input id="licensePlate" formControlName="licensePlate" type="text" class="form-control" required />
+      </div>
+  
+      <div class="form-group">
+        <label for="vehicleType">Vehicle Type:</label>
+        <select id="vehicleType" formControlName="vehicleType" class="form-control" required>
+          <option value="" disabled>Select vehicle type</option>
+          <option *ngFor="let type of vehicleTypes" [value]="type">{{ type }}</option>
+        </select>
+      </div>
+  
+      <div class="form-group">
+        <label for="entryTime">Entry Time:</label>
+        <input id="entryTime" formControlName="entryTime" type="datetime-local" class="form-control" required />
+      </div>
+  
+      <div class="form-group">
+        <label for="exitTime">Exit Time:</label>
+        <input id="exitTime" formControlName="exitTime" type="datetime-local" class="form-control" required />
+      </div>
+  
+      <div class="form-group">
+        <label for="assignedSpot">Assigned Parking Spot:</label>
+        <select id="assignedSpot" formControlName="assignedSpot" class="form-control" required>
+          <option value="" disabled>Select parking spot</option>
+          <option *ngFor="let spot of parkingSpots" [value]="spot.spotId">{{ spot.spotId }} - {{ spot.spotSize }}</option>
+        </select>
+      </div>
+  
+      <button type="submit" class="btn btn-primary" [disabled]="parkCarForm.invalid">Park Vehicle</button>
+    </form>
+  </div>
+  

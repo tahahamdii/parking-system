@@ -1,0 +1,57 @@
+<form (ngSubmit)="addParkingSpot()" #parkingSpotForm="ngForm">
+    <div>
+      <label for="spotId">Spot ID:</label>
+      <input type="text" id="spotId" [(ngModel)]="parkingSpot.spotId" name="spotId" required />
+    </div>
+  
+    <div>
+      <label for="spotSize">Spot Size:</label>
+      <select id="spotSize" [(ngModel)]="parkingSpot.spotSize" name="spotSize" required>
+        <option value="SMALL">SMALL</option>
+        <option value="MEDIUM">MEDIUM</option>
+        <option value="LARGE">LARGE</option>
+      </select>
+    </div>
+  
+    <div>
+      <label for="isOccupied">Is Occupied:</label>
+      <input type="checkbox" id="isOccupied" [(ngModel)]="parkingSpot.isOccupied" name="isOccupied" />
+    </div>
+  
+    <!-- Conditionally display the vehicle-related fields if 'isOccupied' is true -->
+    <div *ngIf="parkingSpot.isOccupied">
+      <div>
+        <label for="licensePlate">Vehicle License Plate:</label>
+        <input type="text" id="licensePlate" [(ngModel)]="parkingSpot.currentVehicle.licensePlate" name="licensePlate" required />
+      </div>
+  
+      <div>
+        <label for="vehicleType">Vehicle Type:</label>
+        <select id="vehicleType" [(ngModel)]="parkingSpot.currentVehicle.vehicleType" name="vehicleType" required>
+          <option value="CAR">CAR</option>
+          <option value="MOTORCYCLE">MOTORCYCLE</option>
+          <option value="TRUCK">TRUCK</option>
+        </select>
+      </div>
+  
+      <div>
+        <label for="entryTime">Entry Time:</label>
+        <input type="datetime-local" id="entryTime" [(ngModel)]="parkingSpot.currentVehicle.entryTime" name="entryTime" required />
+      </div>
+  
+      <div>
+        <label for="exitTime">Exit Time:</label>
+        <input type="datetime-local" id="exitTime" [(ngModel)]="parkingSpot.currentVehicle.exitTime" name="exitTime" required />
+      </div>
+  
+      <div>
+        <label for="assignedSpot">Assigned Spot:</label>
+        <input type="text" id="assignedSpot" [(ngModel)]="parkingSpot.currentVehicle.assignedSpot" name="assignedSpot" required />
+      </div>
+    </div>
+  
+    <div>
+      <button type="submit" [disabled]="!parkingSpotForm.form.valid">Add Parking Spot</button>
+    </div>
+  </form>
+  

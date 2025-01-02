@@ -1,0 +1,20 @@
+<div *ngIf="parkedVehicles.length > 0">
+    <h2>Exit Vehicle</h2>
+  
+    <!-- Dropdown to select a parked vehicle -->
+    <label for="vehicle">Select Vehicle:</label>
+    <select id="vehicle" [(ngModel)]="selectedVehicleId">
+      <option value="">--Select a Vehicle--</option>
+      <option *ngFor="let vehicle of parkedVehicles" [value]="vehicle.id">
+        {{ vehicle.licensePlate }}
+      </option>
+    </select>
+  
+    <!-- Button to register the exit of the selected vehicle -->
+    <button (click)="registerExit()">Exit</button>
+  </div>
+  
+  <div *ngIf="parkedVehicles.length === 0">
+    <p>No vehicles are currently parked.</p>
+  </div>
+  

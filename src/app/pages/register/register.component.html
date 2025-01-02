@@ -1,0 +1,84 @@
+<div class="container">
+    <h2>Register</h2>
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <!-- Name Field -->
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input
+          type="text"
+          id="name"
+          class="form-control"
+          formControlName="name"
+          [ngClass]="{ 'is-invalid': submitted && f['name'].invalid }"
+          placeholder="Enter your name"
+        />
+        <div *ngIf="submitted && f['name'].invalid" class="invalid-feedback">
+          Name is required.
+        </div>
+      </div>
+  
+      <!-- Email Field -->
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input
+          type="email"
+          id="email"
+          class="form-control"
+          formControlName="email"
+          [ngClass]="{ 'is-invalid': submitted && f['email'].invalid }"
+          placeholder="Enter your email"
+        />
+        <div *ngIf="submitted && f['email'].invalid" class="invalid-feedback">
+          <div *ngIf="f['email'].errors?.['required']">Email is required.</div>
+          <div *ngIf="f['email'].errors?.['email']">Please enter a valid email address.</div>
+        </div>
+      </div>
+  
+      <!-- Password Field -->
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input
+          type="password"
+          id="password"
+          class="form-control"
+          formControlName="password"
+          [ngClass]="{ 'is-invalid': submitted && f['password'].invalid }"
+          placeholder="Enter your password"
+        />
+        <div *ngIf="submitted && f['password'].invalid" class="invalid-feedback">
+          <div *ngIf="f['password'].errors?.['required']">Password is required.</div>
+          <div *ngIf="f['password'].errors?.['minlength']">
+            Password must be at least 6 characters.
+          </div>
+        </div>
+      </div>
+  
+      <!-- Role Field -->
+      <div class="form-group">
+        <label for="role">Role</label>
+        <select
+          id="role"
+          class="form-control"
+          formControlName="role"
+          [ngClass]="{ 'is-invalid': submitted && f['role'].invalid }"
+        >
+          <option value="ADMIN">ADMIN</option>
+          <option value="USER">USER</option>
+        </select>
+        <div *ngIf="submitted && f['role'].invalid" class="invalid-feedback">
+          Role is required.
+        </div>
+      </div>
+  
+      <!-- Submit Button -->
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary" [disabled]="registerForm.invalid">Register</button>
+      </div>
+  
+      <!-- Error Message -->
+      <div *ngIf="errorMessage" class="alert alert-danger">
+        {{ errorMessage }}
+      </div>
+    </form>
+  </div>
+  
