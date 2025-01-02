@@ -3,12 +3,23 @@
     <form [formGroup]="parkCarForm" (ngSubmit)="onSubmit()">
       <div class="form-group">
         <label for="licensePlate">License Plate:</label>
-        <input id="licensePlate" formControlName="licensePlate" type="text" class="form-control" required />
+        <input
+          id="licensePlate"
+          formControlName="licensePlate"
+          type="text"
+          class="form-control"
+          required
+        />
       </div>
   
       <div class="form-group">
         <label for="vehicleType">Vehicle Type:</label>
-        <select id="vehicleType" formControlName="vehicleType" class="form-control" required>
+        <select
+          id="vehicleType"
+          formControlName="vehicleType"
+          class="form-control"
+          required
+        >
           <option value="" disabled>Select vehicle type</option>
           <option *ngFor="let type of vehicleTypes" [value]="type">{{ type }}</option>
         </select>
@@ -16,23 +27,56 @@
   
       <div class="form-group">
         <label for="entryTime">Entry Time:</label>
-        <input id="entryTime" formControlName="entryTime" type="datetime-local" class="form-control" required />
+        <input
+          id="entryTime"
+          formControlName="entryTime"
+          type="datetime-local"
+          class="form-control"
+          required
+        />
       </div>
   
       <div class="form-group">
         <label for="exitTime">Exit Time:</label>
-        <input id="exitTime" formControlName="exitTime" type="datetime-local" class="form-control" required />
+        <input
+          id="exitTime"
+          formControlName="exitTime"
+          type="datetime-local"
+          class="form-control"
+          required
+        />
       </div>
   
       <div class="form-group">
         <label for="assignedSpot">Assigned Parking Spot:</label>
-        <select id="assignedSpot" formControlName="assignedSpot" class="form-control" required>
+        <select
+          id="assignedSpot"
+          formControlName="assignedSpot"
+          class="form-control"
+          required
+        >
           <option value="" disabled>Select parking spot</option>
-          <option *ngFor="let spot of parkingSpots" [value]="spot.spotId">{{ spot.spotId }} - {{ spot.spotSize }}</option>
+          <option *ngFor="let spot of parkingSpots" [value]="spot.spotId">
+            {{ spot.spotId }}
+          </option>
         </select>
       </div>
   
-      <button type="submit" class="btn btn-primary" [disabled]="parkCarForm.invalid">Park Vehicle</button>
+      <!-- Recommendations Section -->
+      <div *ngIf="recommendedSpots.length > 0" class="recommendation-section">
+        <h3>Recommended Parking Spots:</h3>
+        <ul>
+          <li *ngFor="let spot of recommendedSpots">{{ spot }}</li>
+        </ul>
+      </div>
+  
+      <button
+        type="submit"
+        class="btn btn-primary"
+        [disabled]="parkCarForm.invalid"
+      >
+        Park Vehicle
+      </button>
     </form>
   </div>
   
