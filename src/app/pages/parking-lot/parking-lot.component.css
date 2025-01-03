@@ -1,4 +1,11 @@
 .dashboard-container {
+  background-image: url('../../../assets/cars.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  height: 100vh;
+  display: block;
+  opacity: 2;
     padding: 20px;
   }
   

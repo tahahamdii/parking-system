@@ -66,6 +66,8 @@ export class MasterService {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     return this.http.delete<any>(`http://localhost:8080/parkingSpot/delete/${spotId}`, { headers });
   }
+
+  /// IOT RELATION
   private apiUrl3 = 'http://localhost:8080/parkingLot/registerVehicle'
   registerVehicle(vehicle: Vehicle, token : string): Observable<any> {
     const headers = new HttpHeaders({
